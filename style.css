@@ -34,3 +34,13 @@ body {
     font-style: italic;
     text-align: right;
 }
+
+#thinking:not(.on) {
+    visibility: hidden;
+}
+
+#thinking {
+    padding: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

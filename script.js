@@ -58,25 +58,47 @@ function convert_units(km,units) {
     return km*factors[units];
 }
 
+let run = 0;
 function compute() {
+    run += 1;
+    const this_run = run;
     const home = home_input.value;
     const postcodes = postcodes_input.value.split('\n').map(x=>x.trim()).filter(x=>x!='');
     const units = unit_inputs.find(x=>x.checked).value;
     units_display.innerHTML = units;
-    console.log(units);
     output.innerHTML = '';
+    let thinking = 0;
+    thinking_display.classList.add('on');
     postcodes.forEach(function(postcode) {
+        thinking += 1;
         distance_between(home,postcode,units)
             .then(function(d) {
+                if(run!=this_run) {
+                    return;
+                }
                 d = convert_units(d,units);
                 output.innerHTML += `<tr><td class="postcode">${postcode.toUpperCase()}</td><td class="distance">${d.toFixed(3)}</td></tr>`;
             })
             .catch(function(e) {
+                if(run!=this_run) {
+                    return;
+                }
                 output.innerHTML += `<tr><td class="postcode">${postcode.toUpperCase()}</td><td class="error">Invalid</td></tr>`;
+            })
+            .finally(function() {
+                if(run!=this_run) {
+                    return;
+                }
+                thinking -= 1;
+                if(thinking == 0) {
+                    thinking_display.classList.remove('on');
+                }
             });
     });
+
 }
 
+const thinking_display = document.getElementById('thinking');
 const home_input = document.getElementById('home');
 const postcodes_input = document.getElementById('postcodes');
 const unit_inputs = Array.prototype.slice.apply(document.querySelectorAll('input[name="units"]'));
