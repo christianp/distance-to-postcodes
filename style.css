@@ -1,0 +1,36 @@
+html {
+    font-size: 16px;
+}
+body {
+    font-family: sans-serif;
+}
+
+#home {
+    font-size: 1em;
+}
+
+#postcodes {
+    display: block;
+    font-size: 1em;
+    height: 10em;
+}
+
+#output {
+    margin-top: 2rem;
+    border-collapse: collapse;
+}
+
+#output td {
+    font-family: monospace;
+    border: 1px solid #333;
+    padding: 0.2rem 0.5rem;
+}
+#output td.distance {
+    text-align: right;
+}
+#output td.error {
+    font-family: sans-serif;
+    color: red;
+    font-style: italic;
+    text-align: right;
+}

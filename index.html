@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="style.css"></link>
+    </head>
+    <body>
+        <label for="home">
+            <p>
+            Find the distance from
+                <input type="text" id="home">
+            </p>
+        </label>
+        <label for="postcodes">
+            <p>to</p>
+            <textarea id="postcodes"></textarea>
+        </label>
+        <p>(put each postcode on a separate line)</p>
+        <p>
+            in
+            <label><input type="radio" name="units" value="km" checked> km</label>    
+            <label><input type="radio" name="units" value="miles"> miles</label>    
+        </p>
+        <button type="button" id="go">please</button>
+
+        <table id="output">
+            <thead>
+                <tr>
+                    <th>Postcode</th>
+                    <th>Distance (<span id="units-display">km</span>)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </body>
+</html>
